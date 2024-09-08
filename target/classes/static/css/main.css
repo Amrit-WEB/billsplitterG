@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+.container{
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    min-height: 100vh;
+}
+.top-nav-bar{
+    background: linear-gradient(315deg, rgba(255,249,56,1) 0%, rgba(146,255,157,1) 100%);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.left-panel{
+    background-color: whitesmoke;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    min-height: 90vh;
+}
+.nav-item{
+    margin: .3rem 0;
+    padding: .3rem 2rem;
+    color: rgb(75, 75, 75);
+    transition: all .1s;
+}
+.nav-active{
+    background: #4ab555;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: white;
+}
+.nav-item:hover{
+    background: #4ab555;
+    color: white;
+}
+
+.dashboard-card{
+    background-color: whitesmoke;
+    border-radius:.6rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 27rem;
+    height: 10rem;
+}
+.dashboard-icon{
+    background-color: #4ab555;
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    text-align: center;
+}
+.dashboard-icon>i{
+    font-size: 3rem;
+}
+.dashboard-info{
+    color: rgb(89, 89, 89);
+}
+.dashboard-btn{
+	color: rgb(89, 89, 89);
+	text-decoration:none;
+}
+
+
+.dropdown-form{
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.collapse-form{
+    width: 60%;
+    background-color: whitesmoke;
+    padding: 1rem 1.2rem;
+    margin: 1rem 1.2rem;
+    border-radius: .3rem;
+}

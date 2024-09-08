@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.container{
+    min-height: 100vh;
+    background: linear-gradient(315deg, rgba(255,249,56,1) 0%, rgba(146,255,157,1) 100%);
+}
+.navbar{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.auth-box{
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.err-msg{
+            color: red;
+            display: none;
+            font-size: 10px;
+}

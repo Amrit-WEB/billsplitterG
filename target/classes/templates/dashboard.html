@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Splitter - Dashboard</title>
+    <link rel="shortcut icon" href="/assets/favicon_io/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container ">
+        <div class="top-nav-bar w-100 d-flex align-items-center justify-content-between px-5 py-2">
+            <img src="/assets/bill_Splitter.svg" alt="Logo" width="50" class="d-inline-block align-text-top">
+            <p class="py-2 px-3 bg-white rounded-4 m-0">Hello👋, <strong class="text-grey" th:text="${username}"></strong></p>
+        </div>
+        <div class="panel mw-100 d-flex flex-row">
+            <div class="left-panel w-25 d-flex flex-column justify-content-between">
+                <ul class="navbar-nav d-flex flex-column">
+                        <li class="nav-item nav-active">
+                          <a class="nav-link" href="/dashboard"><i class="bi bi-house-door-fill"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/mybill"><i class="bi bi-wallet"></i> My Bill</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/settlebill"><i class="bi bi-wallet2"></i> Settle Bill</a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/managebill"><i class="bi bi-receipt"></i> Manage Bill</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/receivebill"><i class="bi bi-wallet-fill"></i> Receive Money</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/friends"><i class="bi bi-people-fill"></i> Friends</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-box-arrow-left"></i> Log Out</a>
+                        </li>
+                </ul>
+                <div class="footer align-self-center mb-2">
+                    <hr>
+                    <a class="nav-link text-center" href="#" target="_blank">©️ Amritanshu Prajapati | 2024</a>
+                </div>
+            </div>
+            <!--MAIN DATA PANEL-->
+            <div class="right-panel w-75 d-flex flex-wrap justify-content-around align-items-center">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon ">
+                        <i class="bi bi-bank"></i>
+                    </div>
+                    <div class="dashboard-info">
+                        <p class="mb-0 fs-3"><a class="dashboard-btn" href="/receivebill" title="Click to show all owing amount bill list">Owe</a></p>
+                        <hr class="mb-3 mt-0">
+                        <p class="mb-1"><strong th:text="${'Rs.'+{countOwe}}"></strong></p>
+                        <p th:if="${countOwe > 0}">You Have To Take Money From Your Friends.</p>
+                        <p th:if="${countOwe == 0}">No One Have To Pay Any Amount To You.</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon  bg-danger">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <div class="dashboard-info">
+                        <p class="mb-0 fs-3"><a class="dashboard-btn" href="/settlebill" title="Click to show all paying bill list">Pay</a></p>
+                        <hr class="mb-3 mt-0">
+                        <p class="mb-1"><strong th:text="${'Rs.'+{countPay}}"></strong></p>
+                        <p th:if="${countPay > 0}">You Have To Give Money To Your Friends.</p>
+                        <p th:if="${countPay == 0}">Yay! You Don't Need To Pay AnyOne.</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon bg-warning">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div class="dashboard-info">
+                        <p class="mb-0 fs-3"><a class="dashboard-btn" href="/friends" title="Click to see your awesome friends">Friends</a></p>
+                        <hr class="mb-3 mt-0">
+                        <p class="mb-1"><strong class="fs-4" th:text="${friendCount}"></strong></p>
+                        <p th:if="${friendCount > 0}">Wow! Yours <strong th:text="${friendCount}"></strong> Friends Are Awesome.</p>
+                        <p th:unless="${friendCount > 0}"><a  class="btn btn-warning text-white" href="/friends">Add Some Friends</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BootStrap Functionality -->
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"><i class="bi bi-box-arrow-left"></i> LogOut</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <span th:text="${username}"></span> 🙋‍♂️, want to log out ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <a href="/logout" type="button" class="btn btn-danger">Yes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>

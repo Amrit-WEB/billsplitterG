@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Splitter</title>
+    <link rel="shortcut icon" href="/assets/favicon_io/favicon.ico" type="image/x-icon">
+    <style>
+	@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Ubuntu", sans-serif;
+        }
+        .error-container{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .head{
+            width: 100%;
+            background: linear-gradient(315deg, rgba(255,249,56,1) 0%, rgba(146,255,157,1) 100%);
+        }
+        .head>img{
+            width: 50px;
+            margin: 1rem 2rem;
+            
+        }
+        .body{
+            width: fit-content;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        .body>h2{
+            margin: 1rem;
+            text-transform: capitalize;
+        }
+        .body>a{
+            text-decoration: none;
+            color: darkgreen;
+            border: 2px solid greenyellow;
+            border-radius: 5px;
+            padding: .4rem;
+            margin: 1rem;
+        }
+        .footer{
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="head">
+            <img src="/assets/bill_Splitter.svg" alt="Logo">
+        </div>
+        <div class="body">
+            <h2 th:text="${message}"></h2>
+            <a th:href="@{${referLocation}}" title="Hey, Click me">👆Click here to GO back</a>
+        </div>
+        <div class="footer">
+            <p>By Amritanshu Prajapati🙋‍♂️ (2318441)</p>
+        </div>
+    </div>
+</body>
+</html>
